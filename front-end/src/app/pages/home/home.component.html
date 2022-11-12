@@ -1,0 +1,32 @@
+<div class="container pt-5 pb-5">
+	<div id="header" class="text-center">
+		<h1>GET THE RIGHT TIME NOW</h1>
+		<h5>ON ANY TIME ZONE</h5>
+	</div>
+
+	<form [formGroup]="form" class="mt-5 mb-4">
+		<div class="form-row">
+			<div class="form-group col-12">
+				<label for="timezone">Time Zone:</label>
+				<app-visual-validator [config]="validations" field="timezone">
+					<ng-select id="timezone"
+						[items]="timezones"
+						dropdownPosition="bottom"
+						placeholder="Select a time zone"
+						formControlName="timezone"
+					></ng-select>
+				</app-visual-validator>
+			</div>
+		</div>
+	</form>
+
+	<div id="answer" class="text-center">
+		<div *ngIf="!timeNow" class="alert alert-warning text-center">
+			Select a valid time zone to get the time now.
+		</div>
+
+		<div *ngIf="timeNow" class="alert alert-sucess text-center">
+			<h1>Time Now: {{ timeNow }}</h1>
+		</div>
+	</div>
+</div>
