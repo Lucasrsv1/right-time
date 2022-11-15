@@ -1,6 +1,8 @@
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
 
+const timezones = require("../resources/timestamps.json");
+
 // Requer o plugin utc
 const timezone = require("dayjs/plugin/timezone");
 
@@ -16,7 +18,6 @@ class Time {
 		const results = {};
 		const now = dayjs();
 
-		const timezones = Intl.supportedValuesOf("timeZone");
 		if (!req.query.tz) {
 			for (const tz of timezones)
 				results[tz] = now.tz(tz).format("YYYY-MM-DD HH:mm:ss");
@@ -34,7 +35,6 @@ class Time {
 	 * @param {import("express").Response} res
 	 */
 	listTimezones (req, res) {
-		const timezones = Intl.supportedValuesOf("timeZone");
 		res.status(200).json({ timezones });
 	}
 }

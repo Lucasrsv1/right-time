@@ -1,6 +1,6 @@
 {
 	"name": "right-time",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Get the right time on any time zone.",
 	"main": "index.js",
 	"scripts": {
